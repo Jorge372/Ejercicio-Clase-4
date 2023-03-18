@@ -36,4 +36,8 @@ public class Persona {
         else
             return LocalDate.now().getYear()-fechaNac.getYear()-1;
     }
+
+    public Carrito getCarrito() {
+        return carrito;
+    }
 }
