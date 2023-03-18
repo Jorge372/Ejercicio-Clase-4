@@ -1,6 +1,7 @@
 import jorge.compras.*;
 
 public class Main {
+    //DEBE AGREGAR UN PARAMETRO (F, %, o %F) ANTES DE CORRER EL PROGRAMA
     public static void main(String[] args) {
         Persona persona1 = new Persona("Jorge", "Arbach", 2002,7,30);
         Carrito carrito1 = new Carrito();
