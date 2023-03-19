@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
         Persona persona1 = new Persona("Jorge", "Arbach", 2002,7,30);
         Carrito carrito1 = new Carrito();
-        Producto producto1 = new Producto("Queso", 510.2);
-        Producto producto2 = new Producto("Jamon", 400.3);
-        Producto producto3 = new Producto("Pan", 200.5);
+        Producto producto1 = new Producto("Queso", 0.0);
+        Producto producto2 = new Producto("Jamon", 0.0);
+        Producto producto3 = new Producto("Pan", 10.0);
 
 
         Descuento descuento = switch (args[0]) {
@@ -32,7 +32,15 @@ public class Main {
         descuento.setValor(d);
         carrito1.setDescuento(descuento);
 
-        System.out.println("El precio final a pagar del carrito es: $"+carrito1.obtenerCostoFinal());
+        try {
+            System.out.println("El precio final a pagar del carrito es: $"+carrito1.obtenerCostoFinal());
+        }
+        catch (CarritoPrecio0Exception e){
+            System.out.println(e.getMessage());
+        }
+        catch (DescuentoMontoNegativoException e){
+            System.out.println(e.getMessage());
+        }
 
 
     }

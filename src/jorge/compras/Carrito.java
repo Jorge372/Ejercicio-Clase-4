@@ -6,7 +6,6 @@ public class Carrito {
     private Descuento descuento;
     private ArrayList<Producto> Productos;
     private float costoTotal;
-    private static final int tamaño = 3;
     public Carrito(){
         Productos = new ArrayList<>();
         descuento = new DescuentoNulo();
@@ -21,15 +20,20 @@ public class Carrito {
         return descuento;
     }
     public void agregarProducto(Producto producto){
-        if (Productos.size()<tamaño) {
             Productos.add(producto);
-            costoTotal += producto.getPrecio();
-        }
-        else
-            System.out.println("El carrito esta lleno");
+            costoTotal += producto.getPrecio();;
     }
-    public float obtenerCostoFinal(){
-
+    public void quitarProducto(Producto producto){
+        Productos.add(producto);
+        costoTotal -= producto.getPrecio();;
+    }
+    public float obtenerCostoFinal() throws CarritoPrecio0Exception, DescuentoMontoNegativoException {
+        if (costoTotal==0){
+            throw new CarritoPrecio0Exception();
+        }
+        else if (descuento.getValorFinal(costoTotal)<0) {
+            throw new DescuentoMontoNegativoException();
+        }
         return descuento.getValorFinal(costoTotal);
     }
 }
